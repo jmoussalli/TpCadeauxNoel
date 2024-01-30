@@ -23,7 +23,12 @@ class CadeauRepositoryTests {
 
     @Test
     void testFindByNom() {
-        cadeauRepository.findById(1l);
+        Optional<Cadeau> opt = cadeauRepository.findById(1l);
+        if (opt.isEmpty()){
+            System.out.println("Cadeau non trouvé");
+        } else {
+            System.out.println(opt.get());
+        }
     }
 
 }
