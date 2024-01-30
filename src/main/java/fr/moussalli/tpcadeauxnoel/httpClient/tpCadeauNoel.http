@@ -1,0 +1,27 @@
+### Send POST request with json body
+POST http://localhost:8080/api/cadeaux
+Content-Type: application/json
+
+{
+  "nom": "PC portable",
+  "description": "Un PC portable puissant pour travailler et jouer",
+  "prix": 499.99
+}
+
+### Send POST request with json body
+POST http://localhost:8080/api/cadeaux
+Content-Type: application/json
+
+{
+"nom": "Bureau Assis Debout",
+"description": "Bureau assis-debout électrique, idéal pour le télétravail",
+"prix": 349.99
+}
+
+### GET request with a header
+GET http://localhost:8080/api/cadeaux
+Accept: application/json
+
+### GET request with a header
+GET http://localhost:8080/api/cadeaux/3
+Accept: application/json
