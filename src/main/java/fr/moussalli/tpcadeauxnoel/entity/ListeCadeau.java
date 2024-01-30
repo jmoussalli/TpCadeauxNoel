@@ -2,9 +2,8 @@ package fr.moussalli.tpcadeauxnoel.entity;
 
 import jakarta.persistence.*;
 
-
 @Entity
-public class Cadeau {
+public class ListeCadeau {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -12,18 +11,13 @@ public class Cadeau {
 
     private String nom;
     private String description;
-    private Double prix;
-    @ManyToOne
-    @JoinColumn(name = "liste_cadeau_id")
-    private ListeCadeau listeCadeau;
 
-    public Cadeau() {
+    public ListeCadeau() {
     }
 
-    public Cadeau(String nom, String description, Double prix) {
+    public ListeCadeau(String nom, String description) {
         this.nom = nom;
         this.description = description;
-        this.prix = prix;
     }
 
     public Long getId() {
@@ -50,30 +44,12 @@ public class Cadeau {
         this.description = description;
     }
 
-    public Double getPrix() {
-        return prix;
-    }
-
-    public void setPrix(Double prix) {
-        this.prix = prix;
-    }
-
-    public ListeCadeau getListeCadeau() {
-        return listeCadeau;
-    }
-
-    public void setListeCadeau(ListeCadeau listeCadeau) {
-        this.listeCadeau = listeCadeau;
-    }
-
     @Override
     public String toString() {
         return "Cadeau{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", description='" + description + '\'' +
-                ", prix=" + prix +
-                ", listeCadeau=" + listeCadeau +
                 '}';
     }
 }
