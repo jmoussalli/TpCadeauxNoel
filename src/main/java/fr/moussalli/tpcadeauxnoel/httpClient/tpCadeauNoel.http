@@ -5,7 +5,11 @@ Content-Type: application/json
 {
   "nom": "PC portable",
   "description": "Un PC portable puissant pour travailler et jouer",
-  "prix": 499.99
+  "prix": 499.99,
+  "listeCadeau" :{
+    "nom": "Cadeaux de Noël",
+    "description": "Liste des cadeaux de Noël 2024"
+  }
 }
 
 ### Send POST request with json body

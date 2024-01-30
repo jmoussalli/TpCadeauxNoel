@@ -1,7 +1,7 @@
 package fr.moussalli.tpcadeauxnoel.controller;
 
 import fr.moussalli.tpcadeauxnoel.entity.Cadeau;
-import fr.moussalli.tpcadeauxnoel.service.LettreAuPereNoel;
+import fr.moussalli.tpcadeauxnoel.service.CadeauService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +15,12 @@ import java.util.Optional;
 public class CadeauController {
 
     @Autowired
-    private LettreAuPereNoel lettreAuPereNoel;
+    private CadeauService cadeauService;
 
     // GET /cadeaux
     @GetMapping("cadeaux")
     public List<Cadeau> getCadeaux(){
-        return lettreAuPereNoel.getAll();
+        return cadeauService.getAll();
     }
 
     // POST /cadeaux
@@ -31,15 +31,14 @@ public class CadeauController {
                    .badRequest()
                    .body("le nom du cadeau est obligatoire");
        else {
-           lettreAuPereNoel.add(cadeau);
-           return ResponseEntity.status(HttpStatus.CREATED).body(cadeau);
+           return ResponseEntity.status(HttpStatus.CREATED).body(cadeauService.add(cadeau));
        }
     }
 
     // GET /cadeaux/4
     @GetMapping("cadeaux/{id}")
     public ResponseEntity<Cadeau> getById(@PathVariable("id") Long id){
-        Optional<Cadeau> optional = lettreAuPereNoel.findById(id);
+        Optional<Cadeau> optional = cadeauService.findById(id);
         if(optional.isEmpty())
             return ResponseEntity.notFound().build();
         else {
@@ -51,13 +50,13 @@ public class CadeauController {
     // DELETE /cadeaux/4
     @DeleteMapping("cadeaux/{id}")
     public void delete(@PathVariable("id") Long id){
-        lettreAuPereNoel.delete(id);
+        cadeauService.delete(id);
     }
 
     // PUT /cadeaux/4
     @PutMapping("cadeaux/{id}")
     public void update(@RequestBody Cadeau cadeau
                     , @PathVariable("id") Integer id){
-        lettreAuPereNoel.update(cadeau);
+        cadeauService.update(cadeau);
     }
 }
