@@ -2,6 +2,9 @@ package fr.moussalli.tpcadeauxnoel.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Optional;
+
+
 
 @Entity
 public class Cadeau {
@@ -24,6 +27,17 @@ public class Cadeau {
         this.nom = nom;
         this.description = description;
         this.prix = prix;
+    }
+
+    public Cadeau(Long id,
+                  String nom,
+                  String description,
+                  Optional<Double> prixDouble,
+                  ListeCadeau listeCadeau) {
+        this.nom = nom;
+        this.description = description;
+        this.prix = prixDouble.get();
+        this.listeCadeau = listeCadeau;
     }
 
     public Long getId() {

@@ -19,7 +19,11 @@ Content-Type: application/json
 {
 "nom": "Bureau Assis Debout",
 "description": "Bureau assis-debout électrique, idéal pour le télétravail",
-"prix": 349.99
+"prix": 349.99,
+  "listeCadeau" :{
+    "nom": "Cadeaux de Noël",
+    "description": "Liste des cadeaux de Noël 2024"
+  }
 }
 
 ### GET request with a header
